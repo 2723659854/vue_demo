@@ -1,0 +1,43 @@
+
+搭建vue项目
+===================================================================================
+1、vue环境配置
+1.要使用vue来开发前端框架，首先要有环境，这个环境要借助于node，所以要先安装node，借助于node里面的npm来安装需要的依赖等等。
+这里有一个小技巧：如果在cmd中直接使用npm来安装的一些工具的话会比较慢，所以我们使用淘宝的npm镜像：
+输入：
+npm install -g cnpm –registry=https://registry.npm.taobao.org
+，即可安装npm镜像，以后再用到npm的地方直接用cnpm来代替就好了
+安装完npm镜像后，开始安装全局vue-cli脚手架，之所以要用vue-cli，是应为这个工具能帮我们搭建好我们需要的模板框架，比较简单。方法：cnpm install -g vue-cli 回车，验证是否安装成功，在命令行中输入vue，出来vue的信息说明安装成功
+
+
+2、cmd创建、启动vue项目
+1、新建一个文件夹（如：first-demo），用来创建Vue项目。（不要带有中文！）
+2、进入该文件夹，输入cmd打开命令行
+3、输入 vue init webpack first-demo ——其中”first-demo”是创建的文件夹名
+4、接下来是一些选择，按默认进行就可。
+5、按照提示，step1：cd 文件夹名；step2：npm install；step3：npm run dev
+
+原文链接：https://blog.csdn.net/achabuhecha/article/details/78468768
+
+
+====================================================================================
+执行上面的命令之后，会出现这个错误
+vue-cli · Failed to download repo vuejs-templates/webpack: unable to verify the first certificate
+
+cmd运行vue init webpack xxx命令时，报vue-cli · Failed to download repo vuejs-templates/webpack: unable to verify the first certificate
+解决方法：
+1、从github上直接下载webpack包， https://github.com/vuejs-templates/webpack
+2、在cmd窗口运行C:\Users\Administrator>mkdir .vue-templates，创建目录.vue-templates
+3、将刚下载下来的webpack-develop文件解压，重命名为webpack，复制黏贴到.vue-templates文件下
+4、在要创建vue项目的路径下，执行vue init webpack xxx --offline，成功解决问题
+原文链接：https://blog.csdn.net/qq_28067121/article/details/112861969
+
+=======================================================
+项目启动原理
+
+首先是启动的main.js ，加载index.html 然后再id=app 出挂载App.vue组件
+这个App.vue组件会使用组件<router-view/> 解析路由，
+然后根据路由加载不同的页面。
+
+===========================================================
+
